@@ -13,5 +13,12 @@
         "psr-4": { "Esolutions\\Laravel\\": "src/" },
         "files": ["src/Http/helpers.php"]
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Esolutions\\Laravel\\Providers\\EsolutionsServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "stable"
 }
