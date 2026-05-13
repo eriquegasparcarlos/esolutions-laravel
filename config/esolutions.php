@@ -12,11 +12,6 @@ return [
         'database_prefix' => env('TENANCY_DATABASE_PREFIX'),
     ],
 
-    'support' => [
-        'email' => env('SUPPORT_EMAIL'),
-        'name'  => env('SUPPORT_NAME', 'Soporte'),
-    ],
-
     'apiperudev' => [
         'url'   => env('APIPERUDEV_URL', 'https://my.apiconsulta.dev/api'),
         'token' => env('APIPERUDEV_TOKEN'),
