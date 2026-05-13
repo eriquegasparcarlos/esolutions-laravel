@@ -1,0 +1,17 @@
+{
+    "name": "esolutions/laravel",
+    "version": "1.0.0",
+    "description": "Base Laravel utilities for ESolutions ecosystem",
+    "type": "library",
+    "license": "proprietary",
+    "authors": [{ "name": "Carlos Erique Gaspar", "email": "eriquegasparcarlos@gmail.com" }],
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.0|^12.0|^13.0"
+    },
+    "autoload": {
+        "psr-4": { "Esolutions\\Laravel\\": "src/" },
+        "files": ["src/Http/helpers.php"]
+    },
+    "minimum-stability": "stable"
+}
