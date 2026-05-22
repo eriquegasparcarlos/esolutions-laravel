@@ -3,6 +3,13 @@
 use Esolutions\Laravel\Http\ApiResponse;
 use Illuminate\Http\JsonResponse;
 
+if (!function_exists('funcRemoveSpaces')) {
+    function funcRemoveSpaces(string $value): string
+    {
+        return preg_replace('/\s+/', ' ', trim($value));
+    }
+}
+
 if (!function_exists('funcStrToUpper')) {
     function funcStrToUpper($text): string
     {
