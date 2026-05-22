@@ -1,6 +1,5 @@
 {
     "name": "esolutions/laravel",
-    "version": "1.1.0",
     "description": "Base Laravel utilities for ESolutions ecosystem",
     "type": "library",
     "license": "proprietary",
