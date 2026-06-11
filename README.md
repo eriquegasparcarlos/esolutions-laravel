@@ -8,10 +8,6 @@ Utilidades base para proyectos Laravel del ecosistema ESolutions.
 composer require esolutions/laravel
 ```
 
-```bash
-composer require esolutions/laravel
-```
-
 ## Namespace
 
 ```
