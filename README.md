@@ -4,13 +4,8 @@ Utilidades base para proyectos Laravel del ecosistema ESolutions.
 
 ## Instalación
 
-```json
-"repositories": [
-    { "type": "vcs", "url": "https://github.com/eriquegasparcarlos/esolutions-laravel" }
-],
-"require": {
-    "esolutions/laravel": "^1.0"
-}
+```bash
+composer require esolutions/laravel
 ```
 
 ```bash
