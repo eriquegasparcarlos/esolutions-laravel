@@ -1,5 +1,12 @@
 # Changelog
 
+## [v1.1.0] - 2026-10-31
+### Fixed
+- `ProgressBarHelper::render()` threw `ValueError` (`str_repeat()` with a negative count) once the bar passed about a third: the empty part was measured with `strlen()` and `█` is 3 bytes. It now counts blocks, and clamps `processed > total` to a full bar.
+### Added
+- `ProgressBarHelper` takes an optional `OutputInterface` (`new ProgressBarHelper(30, $this->output)`) so the bar goes to the command's output instead of a separate `ConsoleOutput`.
+- PHPUnit setup (`composer test`) with tests for `ProgressBarHelper`.
+
 ## [v1.0.6] - 2026-06-11
 ### Fixed
 - Removed hardcoded `"version"` field from `composer.json` on all old tags (caused Packagist to skip v1.0.1–v1.0.5)

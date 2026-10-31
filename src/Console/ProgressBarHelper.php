@@ -3,14 +3,19 @@
 namespace Esolutions\Laravel\Console;
 
 use Symfony\Component\Console\Output\ConsoleOutput;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class ProgressBarHelper
 {
-    protected ConsoleOutput $output;
+    protected OutputInterface $output;
 
-    public function __construct(protected int $barLength = 20)
+    /**
+     * Sin `$output` escribe en la consola. Desde un comando conviene pasar `$this->output`, así lo
+     * que imprime la barra queda en la salida del comando (y se ve en `Artisan::output()`).
+     */
+    public function __construct(protected int $barLength = 20, ?OutputInterface $output = null)
     {
-        $this->output = new ConsoleOutput();
+        $this->output = $output ?? new ConsoleOutput();
     }
 
     public function render(int $processed, int $total, string $status = 'success', ?string $message = null): void
@@ -20,9 +25,13 @@ class ProgressBarHelper
             return;
         }
 
-        $percent      = $processed / $total;
-        $filled       = str_repeat('█', (int) round($this->barLength * $percent));
-        $empty        = str_repeat('░', $this->barLength - strlen($filled));
+        $percent = $processed / $total;
+
+        // Se cuentan bloques, no bytes: '█' ocupa 3 bytes y strlen() dejaba el vacío en negativo
+        // pasada la tercera parte de la barra (str_repeat lanzaba ValueError).
+        $blocks       = max(0, min($this->barLength, (int) round($this->barLength * $percent)));
+        $filled       = str_repeat('█', $blocks);
+        $empty        = str_repeat('░', $this->barLength - $blocks);
         $percentLabel = number_format($percent * 100, 1);
 
         $color = match ($status) {

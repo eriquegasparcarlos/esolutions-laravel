@@ -229,7 +229,9 @@ Barra de progreso visual para comandos Artisan.
 ```php
 use Esolutions\Laravel\Console\ProgressBarHelper;
 
-$bar = new ProgressBarHelper(barLength: 30);
+// Desde un comando, pasar $this->output: la barra queda en la salida del comando
+// (y en Artisan::output() en las pruebas). Sin ese argumento escribe en la consola.
+$bar = new ProgressBarHelper(barLength: 30, output: $this->output);
 
 foreach ($records as $i => $record) {
     // procesar...
@@ -240,6 +242,8 @@ foreach ($records as $i => $record) {
 ```
 Progreso: [████████████░░░░░░░░░░░░░░░░░░] 12/30 (40.0%) - García S.A.C.
 ```
+
+La barra mide siempre `barLength` bloques; si `processed` supera a `total` queda llena.
 
 | Status | Color |
 |---|---|
